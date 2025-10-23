@@ -22,7 +22,7 @@ namespace Payroller
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            
+            //Credentials
             string correctUsername = "Administrator";
             string correctPassword = "RedTech123";
 
