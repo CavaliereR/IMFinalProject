@@ -26,7 +26,7 @@ namespace Payroller
 
         private void LoadEmployeeData()
         {
-            // URL Declaration and Instances and Connections
+            // URL Declaration and Instances and Connection
             MySqlConnection sqlcon = new MySqlConnection("server=192.168.56.1; database=employeemanagementdb; uid=root;");
             MySqlCommand sqlcmd = new MySqlCommand();
             MySqlDataAdapter sqlda = new MySqlDataAdapter();
