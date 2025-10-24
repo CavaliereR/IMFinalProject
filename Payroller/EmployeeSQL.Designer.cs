@@ -69,7 +69,7 @@
             // 
             // btnmenu
             // 
-            btnmenu.Location = new Point(328, 392);
+            btnmenu.Location = new Point(319, 392);
             btnmenu.Name = "btnmenu";
             btnmenu.Size = new Size(138, 29);
             btnmenu.TabIndex = 3;
