@@ -59,52 +59,54 @@ namespace Payroller
 
         private void LoadEmployeeData()
         {
-            // URL Declaration and Instances and Connection
-            MySqlConnection sqlcon = new MySqlConnection("server=mysql-8e60174-payroll-6c5f.f.aivencloud.com;port=28063;database=employeemanagementdb;uid=avnadmin;password=AVNS_648FdEGvtvWN347tEfz;");
-            MySqlCommand sqlcmd = new MySqlCommand();
-            MySqlDataAdapter sqlda = new MySqlDataAdapter();
-            DataSet DS = new DataSet();
+            // Get connection string from environment variable
+            string connectionString = Environment.GetEnvironmentVariable("PAYROLLER_DB_CONN");
 
-            try
+            if (string.IsNullOrEmpty(connectionString))
             {
-                //SQL Connections
-                sqlcon.Open();
-
-                // Query selection: admins see all employees; employees see only their own record
-                if (this.isAdmin)
-                {
-                    sqlcmd.CommandText = "SELECT * FROM employees";
-                    sqlcmd.CommandType = CommandType.Text;
-                    sqlcmd.Connection = sqlcon;
-                }
-                else
-                {
-                    sqlcmd.CommandText = "SELECT * FROM employees WHERE username = @username";
-                    sqlcmd.CommandType = CommandType.Text;
-                    sqlcmd.Connection = sqlcon;
-                    sqlcmd.Parameters.AddWithValue("@username", this.employeeUsername ?? string.Empty);
-                }
-
-                //Execute of SQL Command
-                sqlda.SelectCommand = sqlcmd;
-                sqlda.Fill(DS, "tablefetch");
-                sqlcmd.ExecuteNonQuery();
-
-                //Fetch data from database
-                dataGridView1.DataSource = DS;
-                dataGridView1.DataMember = "tablefetch";
+                MessageBox.Show("Database connection string not set.\nPlease configure PAYROLLER_DB_CONN environment variable.",
+                                "Configuration Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            catch (Exception ex)
+
+            // Open connection safely using 'using' block
+            using (MySqlConnection sqlconn = new MySqlConnection(connectionString))
             {
-                MessageBox.Show("Failed to load employee data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                //close connection
-                if (sqlcon.State == ConnectionState.Open)
-                    sqlcon.Close();
+                MySqlCommand sqlcmd = new MySqlCommand();
+                MySqlDataAdapter sqlda = new MySqlDataAdapter();
+                DataSet DS = new DataSet();
+
+                try
+                {
+                    sqlconn.Open();
+
+                    // Query selection
+                    if (this.isAdmin)
+                    {
+                        sqlcmd.CommandText = "SELECT * FROM employees";
+                    }
+                    else
+                    {
+                        sqlcmd.CommandText = "SELECT * FROM employees WHERE username = @username";
+                        sqlcmd.Parameters.AddWithValue("@username", this.employeeUsername ?? string.Empty);
+                    }
+
+                    sqlcmd.CommandType = CommandType.Text;
+                    sqlcmd.Connection = sqlconn;
+
+                    sqlda.SelectCommand = sqlcmd;
+                    sqlda.Fill(DS, "tablefetch");
+
+                    dataGridView1.DataSource = DS;
+                    dataGridView1.DataMember = "tablefetch";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to load employee data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
+
 
         private void btnmenu_Click(object sender, EventArgs e)
         {

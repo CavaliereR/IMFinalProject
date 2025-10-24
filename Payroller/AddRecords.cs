@@ -45,7 +45,7 @@ namespace Payroller
             }
 
             // Aiven connection string
-            string connectionString = "server=mysql-8e60174-payroll-6c5f.f.aivencloud.com;port=28063;database=employeemanagementdb;uid=avnadmin;password=AVNS_648FdEGvtvWN347tEfz;";
+            string connectionString = Environment.GetEnvironmentVariable("PAYROLLER_DB_CONN");
 
             using (MySqlConnection sqlconn = new MySqlConnection(connectionString))
             {
