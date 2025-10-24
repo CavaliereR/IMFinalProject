@@ -59,7 +59,7 @@ namespace Payroller
 
         private void LoadEmployeeData()
         {
-            // Get connection
+            // Get connection from database
             string connectionString = "server=mysql-8e60174-payroll-6c5f.f.aivencloud.com;port=28063;database=employeemanagementdb;uid=avnadmin;pwd=AVNS_oL7eujRP_tyTsVY7OPl;SslMode=Required;";
             using (MySqlConnection sqlconn = new MySqlConnection(connectionString))
 
