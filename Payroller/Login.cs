@@ -32,6 +32,8 @@ namespace Payroller
             string dummyEmployeeUsername = "employee1";
             string dummyEmployeePassword = "EmpPass123";
 
+            //Checks if Employee or Admin
+
             if (txtUsername.Text == correctUsername && txtPassword.Text == correctPassword)
             {
                 MessageBox.Show("Welcome, Administrator.");
