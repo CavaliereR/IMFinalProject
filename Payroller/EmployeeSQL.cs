@@ -113,12 +113,7 @@ namespace Payroller
             this.Close();
         }
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            if (refreshTimer != null)
-                refreshTimer.Stop();
-            base.OnFormClosing(e);
-        }
+
 
         private void btnaddrecord_Click(object sender, EventArgs e)
         {
