@@ -21,34 +21,58 @@ namespace Payroller
 
         private void btnAddRecord_Click(object sender, EventArgs e)
         {
+            string name = txtName.Text.Trim();
+            string email = txtEmail.Text.Trim();
+            string phone_num = txtPhoneNumber.Text.Trim();
 
-            string name = txtName.Text;
-            string email = txtEmail.Text;
-            string phone_num = txtPhoneNumber.Text;
-            int salary = Convert.ToInt32(txtSalary.Text);
+            // Basic phone number validation (Philippine format)
+            if (!(phone_num.StartsWith("+63") || phone_num.StartsWith("09")))
+            {
+                MessageBox.Show("Invalid phone number format. It should start with +63 or 09.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            //Declare URL
-            MySqlConnection sqlconn = new MySqlConnection("server=LOCALHOST; database=employeemanagementdb; uid=root;");
-            MySqlCommand sqlcmd = new MySqlCommand();
+            if (phone_num.Length < 10 || phone_num.Length > 13)
+            {
+                MessageBox.Show("Phone number must be between 10 and 13 digits (including +63).", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            //Setup connection
-            sqlconn.Open();
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(email))
+            {
+                MessageBox.Show("Please fill out all required fields.", "Missing Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            // Aiven connection string
+            string connectionString = "server=mysql-8e60174-payroll-6c5f.f.aivencloud.com;port=28063;database=employeemanagementdb;uid=avnadmin;password=AVNS_648FdEGvtvWN347tEfz;";
 
-            //Query Request
-            sqlcmd.CommandText = $"INSERT INTO employees (Name, Email, PhoneNumber, Salary" +
-                $")values('{name}', '{email}', '{phone_num}', '{salary}')";
-            sqlcmd.CommandType = CommandType.Text;
-            sqlcmd.Connection = sqlconn;
+            using (MySqlConnection sqlconn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    sqlconn.Open();
 
+                    string query = "INSERT INTO employees (Name, Email, PhoneNumber, HoursWorked, Rate_Per_Hour) " +
+                                   "VALUES (@Name, @Email, @PhoneNumber, 0, 0)";
 
-            //SQL command execution
-            sqlcmd.ExecuteNonQuery();
+                    using (MySqlCommand sqlcmd = new MySqlCommand(query, sqlconn))
+                    {
+                        sqlcmd.Parameters.AddWithValue("@Name", name);
+                        sqlcmd.Parameters.AddWithValue("@Email", email);
+                        sqlcmd.Parameters.AddWithValue("@PhoneNumber", phone_num);
 
-            //Close connection
-            sqlconn.Close();
+                        sqlcmd.ExecuteNonQuery();
+                    }
 
-            MessageBox.Show("Record Added Successfully!", "Record saved!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    MessageBox.Show("New employee record added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
-    } }
+
+    }
+}

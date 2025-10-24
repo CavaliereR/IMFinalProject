@@ -31,11 +31,9 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            label4 = new Label();
             txtName = new TextBox();
             txtEmail = new TextBox();
             txtPhoneNumber = new TextBox();
-            txtSalary = new TextBox();
             btnAddRecord = new Button();
             SuspendLayout();
             // 
@@ -69,16 +67,6 @@
             label3.TabIndex = 2;
             label3.Text = "Phone Number:";
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(81, 255);
-            label4.Name = "label4";
-            label4.Size = new Size(91, 38);
-            label4.TabIndex = 3;
-            label4.Text = "Salary";
-            // 
             // txtName
             // 
             txtName.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -103,18 +91,10 @@
             txtPhoneNumber.Size = new Size(270, 43);
             txtPhoneNumber.TabIndex = 6;
             // 
-            // txtSalary
-            // 
-            txtSalary.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSalary.Location = new Point(416, 256);
-            txtSalary.Name = "txtSalary";
-            txtSalary.Size = new Size(270, 43);
-            txtSalary.TabIndex = 7;
-            // 
             // btnAddRecord
             // 
             btnAddRecord.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAddRecord.Location = new Point(304, 325);
+            btnAddRecord.Location = new Point(297, 278);
             btnAddRecord.Name = "btnAddRecord";
             btnAddRecord.Size = new Size(180, 59);
             btnAddRecord.TabIndex = 8;
@@ -128,11 +108,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(btnAddRecord);
-            Controls.Add(txtSalary);
             Controls.Add(txtPhoneNumber);
             Controls.Add(txtEmail);
             Controls.Add(txtName);
-            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -147,11 +125,9 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private Label label4;
         private TextBox txtName;
         private TextBox txtEmail;
         private TextBox txtPhoneNumber;
-        private TextBox txtSalary;
         private Button btnAddRecord;
     }
 }

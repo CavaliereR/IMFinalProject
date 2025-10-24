@@ -60,7 +60,7 @@ namespace Payroller
         private void LoadEmployeeData()
         {
             // URL Declaration and Instances and Connection
-            MySqlConnection sqlcon = new MySqlConnection("server=192.168.56.1; database=employeemanagementdb; uid=root;");
+            MySqlConnection sqlcon = new MySqlConnection("server=mysql-8e60174-payroll-6c5f.f.aivencloud.com;port=28063;database=employeemanagementdb;uid=avnadmin;password=AVNS_648FdEGvtvWN347tEfz;");
             MySqlCommand sqlcmd = new MySqlCommand();
             MySqlDataAdapter sqlda = new MySqlDataAdapter();
             DataSet DS = new DataSet();
