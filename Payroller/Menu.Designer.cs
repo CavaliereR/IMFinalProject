@@ -30,9 +30,10 @@
         {
             button1 = new Button();
             label1 = new Label();
-            button2 = new Button();
+            version1 = new Button();
             label2 = new Label();
             btnlogout = new Button();
+            salary_manager = new Button();
             SuspendLayout();
             // 
             // button1
@@ -54,15 +55,15 @@
             label1.TabIndex = 1;
             label1.Text = "Employee Records";
             // 
-            // button2
+            // version1
             // 
-            button2.Location = new Point(388, 170);
-            button2.Name = "button2";
-            button2.Size = new Size(80, 84);
-            button2.TabIndex = 2;
-            button2.Text = "💰";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            version1.Location = new Point(12, 14);
+            version1.Name = "version1";
+            version1.Size = new Size(129, 27);
+            version1.TabIndex = 2;
+            version1.Text = "Version 1.0 Build";
+            version1.UseVisualStyleBackColor = true;
+            version1.Click += button2_Click;
             // 
             // label2
             // 
@@ -84,14 +85,24 @@
             btnlogout.UseVisualStyleBackColor = true;
             btnlogout.Click += btnlogout_Click;
             // 
+            // salary_manager
+            // 
+            salary_manager.Location = new Point(383, 170);
+            salary_manager.Name = "salary_manager";
+            salary_manager.Size = new Size(80, 84);
+            salary_manager.TabIndex = 5;
+            salary_manager.Text = "💰";
+            salary_manager.UseVisualStyleBackColor = true;
+            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(593, 402);
+            Controls.Add(salary_manager);
             Controls.Add(btnlogout);
             Controls.Add(label2);
-            Controls.Add(button2);
+            Controls.Add(version1);
             Controls.Add(label1);
             Controls.Add(button1);
             Name = "Menu";
@@ -104,8 +115,9 @@
 
         private Button button1;
         private Label label1;
-        private Button button2;
+        private Button version1;
         private Label label2;
         private Button btnlogout;
+        private Button salary_manager;
     }
 }

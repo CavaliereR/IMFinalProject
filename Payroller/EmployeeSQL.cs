@@ -70,7 +70,7 @@ namespace Payroller
                 return;
             }
 
-            // Open connection safely using 'using' block
+            // Open connection safely using 'using' block.
             using (MySqlConnection sqlconn = new MySqlConnection(connectionString))
             {
                 MySqlCommand sqlcmd = new MySqlCommand();
