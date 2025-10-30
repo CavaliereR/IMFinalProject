@@ -79,7 +79,7 @@
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
             Name = "LogIn";
-            Text = "Enter name and password";
+            Text = "Login Sccreen";
             TopMost = true;
             Load += Passwordscreen_Load;
             ResumeLayout(false);

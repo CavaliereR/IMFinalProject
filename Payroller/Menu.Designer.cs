@@ -93,6 +93,7 @@
             salary_manager.TabIndex = 5;
             salary_manager.Text = "💰";
             salary_manager.UseVisualStyleBackColor = true;
+            salary_manager.Click += salary_manager_Click;
             // 
             // Menu
             // 
