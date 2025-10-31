@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Payroller
 {
@@ -28,6 +29,8 @@ namespace Payroller
         private void btnCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+            Menu nextForm = new Menu();
+            nextForm.Show();
             Close();
         }
     }

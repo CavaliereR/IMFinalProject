@@ -1,4 +1,4 @@
-namespace Payroller
+﻿namespace Payroller
 {
     partial class FindEmployeeForm
     {
@@ -8,7 +8,7 @@ namespace Payroller
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
 
-        
+
 
         protected override void Dispose(bool disposing)
         {
@@ -87,3 +87,4 @@ namespace Payroller
         #endregion
     }
 }
+

@@ -1,4 +1,4 @@
-namespace Payroller
+﻿namespace Payroller
 {
     partial class EditSalaryForm
     {

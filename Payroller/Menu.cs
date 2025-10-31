@@ -33,10 +33,18 @@ namespace Payroller
 
         private void btnlogout_Click(object sender, EventArgs e)
         {
-            
+
             LogIn nextForm = new LogIn();
             nextForm.Show();
             this.Close();
+        }
+
+        private void salary_manager_Click(object sender, EventArgs e)
+        {
+            FindEmployeeForm nextForm = new FindEmployeeForm();
+            nextForm.Show();
+            this.Close();
+
         }
     }
 }

@@ -33,7 +33,6 @@
             btndelrecord = new Button();
             btnmenu = new Button();
             btnRefresh = new Button();
-            btnEditSalary = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -51,7 +50,7 @@
             // 
             // btnaddrecord
             // 
-            btnaddrecord.Location = new Point(44, 357);
+            btnaddrecord.Location = new Point(40, 392);
             btnaddrecord.Name = "btnaddrecord";
             btnaddrecord.Size = new Size(137, 29);
             btnaddrecord.TabIndex = 1;
@@ -88,22 +87,11 @@
             btnRefresh.UseVisualStyleBackColor = true;
             btnRefresh.Click += btnRefresh_Click;
             // 
-            // btnEditSalary
-            // 
-            btnEditSalary.Location = new Point(44, 392);
-            btnEditSalary.Name = "btnEditSalary";
-            btnEditSalary.Size = new Size(137, 29);
-            btnEditSalary.TabIndex = 5;
-            btnEditSalary.Text = "Edit Record";
-            btnEditSalary.UseVisualStyleBackColor = true;
-            btnEditSalary.Click += btnEditSalary_Click;
-            // 
             // EmployeeSQL
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnEditSalary);
             Controls.Add(btnRefresh);
             Controls.Add(btnmenu);
             Controls.Add(btndelrecord);
@@ -122,6 +110,5 @@
         private Button btndelrecord;
         private Button btnmenu;
         private Button btnRefresh;
-        private Button btnEditSalary;
     }
 }
