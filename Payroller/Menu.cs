@@ -38,5 +38,12 @@ namespace Payroller
             nextForm.Show();
             this.Close();
         }
+
+        private void salary_manager_Click(object sender, EventArgs e)
+        {
+            FindEmployeeForm nextForm = new FindEmployeeForm();
+            nextForm.Show();
+            this.Close();
+        }
     }
 }
