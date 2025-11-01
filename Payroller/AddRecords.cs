@@ -52,11 +52,13 @@ namespace Payroller
                 {
                     sqlconn.Open();
 
-                    string query = "INSERT INTO employees (Name, Email, PhoneNumber, HoursWorked, Rate_Per_Hour) " +
-                                   "VALUES (@Name, @Email, @PhoneNumber, 0, 0)";
+                    string query = "INSERT INTO employees (Name, Email, PhoneNumber, HoursWorked, Rate_Per_Hour, Photo) " +
+                                   "VALUES (@Name, @Email, @PhoneNumber, 0, 0, @Photo)";
+
 
                     using (MySqlCommand sqlcmd = new MySqlCommand(query, sqlconn))
                     {
+                        sqlcmd.Parameters.AddWithValue("@Photo", (object)imageBytes ?? DBNull.Value);
                         sqlcmd.Parameters.AddWithValue("@Name", name);
                         sqlcmd.Parameters.AddWithValue("@Email", email);
                         sqlcmd.Parameters.AddWithValue("@PhoneNumber", phone_num);
@@ -73,5 +75,23 @@ namespace Payroller
             }
         }
 
+        private byte[] imageBytes = null;
+        private void btnBrowseImage_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Image Files (*.jpg; *.jpeg; *.png)|*.jpg;*.jpeg;*.png";
+                ofd.Title = "Select Employee Photo";
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    //Display Preview of selected image
+                    picEmployeePhoto.Image = Image.FromFile(ofd.FileName);
+
+                    // Convert image to byte array for database storage
+                    imageBytes = System.IO.File.ReadAllBytes(ofd.FileName);
+                }
+            }
+        }
     }
 }
