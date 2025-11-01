@@ -44,6 +44,7 @@
             txtRate = new TextBox();
             btnOK = new Button();
             btnCancel = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -115,6 +116,16 @@
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(321, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(110, 30);
+            button1.TabIndex = 8;
+            button1.Text = "Back";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // EditSalaryForm
             // 
             AcceptButton = btnOK;
@@ -122,6 +133,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnCancel;
             ClientSize = new Size(443, 204);
+            Controls.Add(button1);
             Controls.Add(lblEmployeeName);
             Controls.Add(btnCancel);
             Controls.Add(btnOK);
@@ -141,5 +153,7 @@
         }
 
         #endregion
+
+        private Button button1;
     }
 }
