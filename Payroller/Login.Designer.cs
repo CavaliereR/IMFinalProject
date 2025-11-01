@@ -93,7 +93,7 @@
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
             Name = "LogIn";
-            Text = "Login Sccreen";
+            Text = "Login Screen";
             TopMost = true;
             Load += Passwordscreen_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
