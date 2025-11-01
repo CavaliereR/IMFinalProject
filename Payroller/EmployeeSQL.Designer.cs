@@ -69,6 +69,7 @@
             btndelrecord.TabIndex = 2;
             btndelrecord.Text = "Delete Record";
             btndelrecord.UseVisualStyleBackColor = true;
+            btndelrecord.Click += btndelrecord_Click;
             // 
             // btnmenu
             // 

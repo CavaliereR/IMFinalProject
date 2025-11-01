@@ -105,7 +105,7 @@ namespace Payroller
                         dataGridView1.RowTemplate.Height = 60;
                     }
 
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -127,7 +127,7 @@ namespace Payroller
 
         private void btnaddrecord_Click(object sender, EventArgs e)
         {
-            
+
             if (!this.isAdmin)
             {
                 MessageBox.Show("You do not have permission to add records.", "Permission Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -141,6 +141,12 @@ namespace Payroller
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadEmployeeData();
+        }
+
+        private void btndelrecord_Click(object sender, EventArgs e)
+        {
+            DeleteForm DeleteForm = new DeleteForm();
+            DeleteForm.Show();
         }
     }
 }
