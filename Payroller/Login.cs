@@ -23,59 +23,45 @@ namespace Payroller
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //Credentials
             string correctUsername = "Administrator";
             string correctPassword = "RedTech123";
+            int attempts = 4;
 
-            // Dummy employee credentials (for testing)
-            // Replace/remove these when you have real employee accounts in the DB
-            string dummyEmployeeUsername = "employee1";
-            string dummyEmployeePassword = "EmpPass123";
-
-            //Checks if Employee or Admin
-
+            // ADMIN LOGIN
             if (txtUsername.Text == correctUsername && txtPassword.Text == correctPassword)
             {
                 MessageBox.Show("Welcome, Administrator.");
-                txtPassword.Clear(); // Clear the password field for security
+                txtPassword.Clear();
                 Menu nextForm = new Menu();
                 nextForm.Show();
                 this.Close();
                 return;
             }
 
-            // Check dummy employee credentials first (local test account)
-            if (txtUsername.Text == dummyEmployeeUsername && txtPassword.Text == dummyEmployeePassword)
-            {
-                MessageBox.Show($"Welcome, {dummyEmployeeUsername}.");
-                txtPassword.Clear();
-
-                // Open EmployeePov (read-only employee POV)
-                EmployeePov employeeForm = new EmployeePov(dummyEmployeeUsername);
-                employeeForm.Show();
-                this.Close();
-                return;
-            }
-
-            // Try to authenticate as an employee in the database
+            // EMPLOYEE LOGIN (check database)
             try
             {
-                using (var sqlcon = new MySqlConnection("server=192.168.56.1; database=employeemanagementdb; uid=root;"))
+                using (var sqlcon = new MySqlConnection("server=mysql-8e60174-payroll-6c5f.f.aivencloud.com;port=28063;database=employeemanagementdb;uid=avnadmin;pwd=AVNS_oL7eujRP_tyTsVY7OPl;SslMode=Required;"))
                 {
                     sqlcon.Open();
-                    using (var cmd = new MySqlCommand("SELECT username FROM employees WHERE username = @user AND password = @pass", sqlcon))
+
+                    string query = "SELECT Name FROM employees WHERE Username = @user AND Password = @pass";
+                    using (var cmd = new MySqlCommand(query, sqlcon))
                     {
                         cmd.Parameters.AddWithValue("@user", txtUsername.Text.Trim());
-                        cmd.Parameters.AddWithValue("@pass", txtPassword.Text);
+                        cmd.Parameters.AddWithValue("@pass", txtPassword.Text.Trim());
+
                         var result = cmd.ExecuteScalar();
+
                         if (result != null)
                         {
-                            // Employee authenticated — open EmployeePov (employee-only view)
-                            string username = result.ToString();
-                            MessageBox.Show($"Welcome, {username}.");
+                            string employeeName = result.ToString();
+                            MessageBox.Show($"Welcome, {employeeName}.");
+
                             txtPassword.Clear();
 
-                            EmployeePov employeeForm = new EmployeePov(username);
+                            // Open employee POV window
+                            EmployeePov employeeForm = new EmployeePov(employeeName);
                             employeeForm.Show();
                             this.Close();
                             return;
@@ -85,20 +71,18 @@ namespace Payroller
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred while trying to authenticate: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred while trying to authenticate: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // If neither admin nor employee matched
+            // LOGIN FAIL
             attempts--;
             if (attempts > 0)
             {
-                MessageBox.Show(
-                   $"Access Denied. You have {attempts} attempts left.",
-                   "Access Denied",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Warning);
-                txtPassword.Clear(); // Clear the password field for security
+                MessageBox.Show($"Access Denied. You have {attempts} attempts left.",
+                                 "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPassword.Clear();
             }
             else
             {
@@ -107,6 +91,7 @@ namespace Payroller
                 Application.Exit();
             }
         }
+
     }
 }
 

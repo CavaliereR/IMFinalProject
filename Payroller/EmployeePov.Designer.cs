@@ -30,7 +30,7 @@
         {
             dataGridView1 = new DataGridView();
             EmployeeRefresh = new Button();
-            EmployeeBack2Menu = new Button();
+            EmployeeLogOut = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -51,24 +51,24 @@
             EmployeeRefresh.TabIndex = 1;
             EmployeeRefresh.Text = "Load/Refresh";
             EmployeeRefresh.UseVisualStyleBackColor = true;
-            EmployeeRefresh.Click += this.button1_Click;
+            EmployeeRefresh.Click += button1_Click;
             // 
-            // EmployeeBack2Menu
+            // EmployeeLogOut
             // 
-            EmployeeBack2Menu.Location = new Point(345, 389);
-            EmployeeBack2Menu.Name = "EmployeeBack2Menu";
-            EmployeeBack2Menu.Size = new Size(117, 37);
-            EmployeeBack2Menu.TabIndex = 2;
-            EmployeeBack2Menu.Text = "Back to Menu";
-            EmployeeBack2Menu.UseVisualStyleBackColor = true;
-            EmployeeBack2Menu.Click += this.EmployeeBack2Menu_Click;
+            EmployeeLogOut.Location = new Point(345, 389);
+            EmployeeLogOut.Name = "EmployeeLogOut";
+            EmployeeLogOut.Size = new Size(117, 37);
+            EmployeeLogOut.TabIndex = 2;
+            EmployeeLogOut.Text = "Log-out";
+            EmployeeLogOut.UseVisualStyleBackColor = true;
+            EmployeeLogOut.Click += EmployeeLogOut_Click;
             // 
             // EmployeePov
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(801, 450);
-            Controls.Add(EmployeeBack2Menu);
+            Controls.Add(EmployeeLogOut);
             Controls.Add(EmployeeRefresh);
             Controls.Add(dataGridView1);
             Name = "EmployeePov";
@@ -81,6 +81,6 @@
 
         private DataGridView dataGridView1;
         private Button EmployeeRefresh;
-        private Button EmployeeBack2Menu;
+        private Button EmployeeLogOut;
     }
 }
