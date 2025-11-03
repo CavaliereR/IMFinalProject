@@ -41,6 +41,7 @@
             lblEmployeename = new Label();
             lblEmployeenumber = new Label();
             lstEmployeeRecords = new ListBox();
+            button1 = new Button();
             SuspendLayout();
             // 
             // txtEmployeeName
@@ -102,11 +103,22 @@
             lstEmployeeRecords.TabIndex = 6;
             lstEmployeeRecords.SelectedIndexChanged += lstEmployeeRecords_SelectedIndexChanged;
             // 
-            // Form2
+            // button1
+            // 
+            button1.Location = new Point(12, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(122, 29);
+            button1.TabIndex = 7;
+            button1.Text = "Return to 2.0 Build";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // Rating
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(596, 481);
+            Controls.Add(button1);
             Controls.Add(lstEmployeeRecords);
             Controls.Add(lblEmployeenumber);
             Controls.Add(lblEmployeename);
@@ -114,7 +126,7 @@
             Controls.Add(cmbPerformanceRating);
             Controls.Add(txtEmployeeNumber);
             Controls.Add(txtEmployeeName);
-            Name = "Form2";
+            Name = "Rating";
             Text = "Form2";
             Load += Form2_Load;
             ResumeLayout(false);
@@ -131,5 +143,6 @@
         private Label lblEmployeename;
         private Label lblEmployeenumber;
         private ListBox lstEmployeeRecords;
+        private Button button1;
     }
 }

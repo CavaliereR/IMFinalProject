@@ -38,13 +38,16 @@
             // 
             // dataGridView1
             // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.BorderStyle = BorderStyle.Fixed3D;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.ColumnHeadersHeight = 60;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView1.Location = new Point(2, 1);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 60;
             dataGridView1.Size = new Size(800, 330);
             dataGridView1.TabIndex = 0;
             // 
@@ -66,6 +69,7 @@
             btndelrecord.TabIndex = 2;
             btndelrecord.Text = "Delete Record";
             btndelrecord.UseVisualStyleBackColor = true;
+            btndelrecord.Click += btndelrecord_Click;
             // 
             // btnmenu
             // 

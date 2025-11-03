@@ -32,7 +32,7 @@ namespace Payroller
 
         private void btnFInish_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private decimal GetSalaryIncrease(string rating)
@@ -74,7 +74,7 @@ namespace Payroller
                 SalaryIncrease = increase
             });
 
-            
+
             if (employeeCount < employeeNames.Length)
             {
                 employeeNames[employeeCount] = name;
@@ -85,7 +85,7 @@ namespace Payroller
                 MessageBox.Show("Employee name array is full.");
             }
 
-           
+
             lstEmployeeRecords.Items.Clear();
             foreach (var record in EmployeeLog)
             {
@@ -96,6 +96,13 @@ namespace Payroller
             txtEmployeeName.Clear();
             txtEmployeeNumber.Clear();
             cmbPerformanceRating.SelectedIndex = 0;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Menu menu = new Menu();
+            menu.Show();
+            this.Close();
         }
     }
 }

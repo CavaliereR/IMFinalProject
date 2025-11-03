@@ -8,7 +8,7 @@ namespace Payroller
     public partial class EmployeePov : Form
     {
         private readonly string employeeUsername;
-        private const string ConnString = "server=192.168.56.1; database=employeemanagementdb; uid=root;";
+        private const string ConnString = "server=mysql-8e60174-payroll-6c5f.f.aivencloud.com;port=28063;database=employeemanagementdb;uid=avnadmin;pwd=AVNS_oL7eujRP_tyTsVY7OPl;SslMode=Required;";
 
         // Designer support constructor - keeps designer working
         public EmployeePov()
@@ -50,27 +50,53 @@ namespace Payroller
         // Loads ALL employee records into the grid
         private void LoadEmployeeData()
         {
-            try
+            string connectionString = "server=mysql-8e60174-payroll-6c5f.f.aivencloud.com;port=28063;database=employeemanagementdb;uid=avnadmin;pwd=AVNS_oL7eujRP_tyTsVY7OPl;SslMode=Required;";
+
+            if (string.IsNullOrEmpty(connectionString))
             {
-                using var con = new MySqlConnection(ConnString);
-                using var cmd = new MySqlCommand("SELECT * FROM employees", con);
-                using var adapter = new MySqlDataAdapter(cmd);
-                var table = new DataTable();
-                adapter.Fill(table);
-
-                dataGridView1.DataSource = table;
-
-                // Hide common credential columns if present
-                if (table.Columns.Contains("password") && dataGridView1.Columns.Contains("password"))
-                    dataGridView1.Columns["password"].Visible = false;
-                if (table.Columns.Contains("passwd") && dataGridView1.Columns.Contains("passwd"))
-                    dataGridView1.Columns["passwd"].Visible = false;
-                if (table.Columns.Contains("PasswordHash") && dataGridView1.Columns.Contains("PasswordHash"))
-                    dataGridView1.Columns["PasswordHash"].Visible = false;
+                MessageBox.Show("Database connection string not set.", "Configuration Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            catch (Exception ex)
+
+            using (MySqlConnection sqlconn = new MySqlConnection(connectionString))
             {
-                MessageBox.Show("Failed to load records: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MySqlCommand sqlcmd = new MySqlCommand();
+                MySqlDataAdapter sqlda = new MySqlDataAdapter();
+                DataSet DS = new DataSet();
+
+                try
+                {
+                    sqlconn.Open();
+
+                    // Query selection
+
+                    sqlcmd.CommandText = "SELECT * FROM employees WHERE Name = @username";
+                    sqlcmd.Parameters.AddWithValue("@username", this.employeeUsername ?? string.Empty);
+
+
+                    sqlcmd.CommandType = CommandType.Text;
+                    sqlcmd.Connection = sqlconn;
+
+                    sqlda.SelectCommand = sqlcmd;
+                    sqlda.Fill(DS, "tablefetch");
+
+                    dataGridView1.DataSource = DS.Tables["tablefetch"];
+
+                    // Image layout setup
+                    if (dataGridView1.Columns.Contains("Photo"))
+                    {
+                        DataGridViewImageColumn imageColumn = (DataGridViewImageColumn)dataGridView1.Columns["Photo"];
+                        imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                        imageColumn.Width = 60;
+                        dataGridView1.RowTemplate.Height = 60;
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to load employee data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -80,12 +106,13 @@ namespace Payroller
             LoadEmployeeData();
         }
 
-        // wired by designer: EmployeeBack2Menu.Click -> EmployeeBack2Menu_Click
-        private void EmployeeBack2Menu_Click(object? sender, EventArgs e)
+
+
+        private void EmployeeLogOut_Click(object sender, EventArgs e)
         {
-            var menu = new Menu();
-            menu.Show();
-            Close();
+            LogIn login = new LogIn();
+            login.Show();
+            this.Close();
         }
     }
 }

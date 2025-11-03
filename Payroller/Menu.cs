@@ -44,7 +44,6 @@ namespace Payroller
             FindEmployeeForm nextForm = new FindEmployeeForm();
             nextForm.Show();
             this.Close();
-
         }
     }
 }
