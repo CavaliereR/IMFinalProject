@@ -31,11 +31,11 @@ namespace Payroller
             {
                 sqlconn.Open();
 
-                string query = $"DELETE FROM employees WHERE Name LIKE '%{SearchName}%'";
+                string query = "DELETE FROM employees WHERE Name = @Name";
                 using (MySqlCommand sqlcmd = new MySqlCommand(query, sqlconn))
                 {
                     // Use parameters safely
-                    sqlcmd.Parameters.AddWithValue("'%{SearchName}%'", "%" + searchName + "%");
+                    sqlcmd.Parameters.AddWithValue("@Name", SearchName);
 
                     int rowsAffected = sqlcmd.ExecuteNonQuery();
 

@@ -24,6 +24,7 @@
             lblPassword = new Label();
             btnLogin = new Button();
             pictureBox1 = new PictureBox();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -63,7 +64,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(197, 222);
+            btnLogin.Location = new Point(56, 224);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(97, 30);
             btnLogin.TabIndex = 4;
@@ -81,11 +82,22 @@
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
             // 
+            // button1
+            // 
+            button1.Location = new Point(220, 224);
+            button1.Name = "button1";
+            button1.Size = new Size(139, 30);
+            button1.TabIndex = 6;
+            button1.Text = "Change Password";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // LogIn
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(427, 266);
+            Controls.Add(button1);
             Controls.Add(pictureBox1);
             Controls.Add(btnLogin);
             Controls.Add(lblPassword);
@@ -109,5 +121,6 @@
         private Label lblPassword;
         private Button btnLogin;
         private PictureBox pictureBox1;
+        private Button button1;
     }
 }

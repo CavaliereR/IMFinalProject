@@ -92,6 +92,12 @@ namespace Payroller
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ChangePassword nextForm = new ChangePassword();
+            nextForm.Show();
+            this.Close();
+        }
     }
 }
 
