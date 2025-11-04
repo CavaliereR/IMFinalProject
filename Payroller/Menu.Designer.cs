@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             button1 = new Button();
             label1 = new Label();
             version1 = new Button();
             label2 = new Label();
             btnlogout = new Button();
             salary_manager = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -95,11 +98,22 @@
             salary_manager.UseVisualStyleBackColor = true;
             salary_manager.Click += salary_manager_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(244, 32);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(88, 80);
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
+            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(593, 402);
+            Controls.Add(pictureBox1);
             Controls.Add(salary_manager);
             Controls.Add(btnlogout);
             Controls.Add(label2);
@@ -108,6 +122,7 @@
             Controls.Add(button1);
             Name = "Menu";
             Text = "Menu";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -120,5 +135,6 @@
         private Label label2;
         private Button btnlogout;
         private Button salary_manager;
+        private PictureBox pictureBox1;
     }
 }
