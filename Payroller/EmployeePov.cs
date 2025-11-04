@@ -10,7 +10,7 @@ namespace Payroller
         private readonly string employeeUsername;
         private const string ConnString = "server=mysql-8e60174-payroll-6c5f.f.aivencloud.com;port=28063;database=employeemanagementdb;uid=avnadmin;pwd=AVNS_oL7eujRP_tyTsVY7OPl;SslMode=Required;";
 
-        // Designer support constructor - keeps designer working
+
         public EmployeePov()
         {
             InitializeComponent();
@@ -18,7 +18,7 @@ namespace Payroller
             Load += EmployeePov_Load;
         }
 
-        // Runtime constructor kept for compatibility but username is not used anymore
+
         public EmployeePov(string username)
         {
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace Payroller
             LoadEmployeeData();
         }
 
-        // Loads ALL employee records into the grid
+        // Loads ALL employee records into the grid. Should probably work because this was based off from another form I think?????
         private void LoadEmployeeData()
         {
             string connectionString = "server=mysql-8e60174-payroll-6c5f.f.aivencloud.com;port=28063;database=employeemanagementdb;uid=avnadmin;pwd=AVNS_oL7eujRP_tyTsVY7OPl;SslMode=Required;";
@@ -100,7 +100,7 @@ namespace Payroller
             }
         }
 
-        // wired by designer: EmployeeRefresh.Click -> button1_Click
+        // Just link function to button function
         private void button1_Click(object? sender, EventArgs e)
         {
             LoadEmployeeData();

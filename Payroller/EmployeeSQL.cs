@@ -148,6 +148,16 @@ namespace Payroller
             DeleteForm DeleteForm = new DeleteForm();
             DeleteForm.Show();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 

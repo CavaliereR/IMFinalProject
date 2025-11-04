@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddRecords));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -114,6 +115,7 @@
             // 
             // picEmployeePhoto
             // 
+            picEmployeePhoto.BackgroundImage = (Image)resources.GetObject("picEmployeePhoto.BackgroundImage");
             picEmployeePhoto.BackgroundImageLayout = ImageLayout.Stretch;
             picEmployeePhoto.Location = new Point(344, 2);
             picEmployeePhoto.Name = "picEmployeePhoto";

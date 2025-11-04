@@ -23,8 +23,8 @@
             lblUsername = new Label();
             lblPassword = new Label();
             btnLogin = new Button();
-            pictureBox1 = new PictureBox();
             button1 = new Button();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -72,16 +72,6 @@
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(197, 43);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(46, 42);
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
-            // 
             // button1
             // 
             button1.Location = new Point(220, 224);
@@ -92,13 +82,24 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.AccessibleRole = AccessibleRole.None;
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(165, 31);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(91, 86);
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
+            // 
             // LogIn
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(427, 266);
-            Controls.Add(button1);
             Controls.Add(pictureBox1);
+            Controls.Add(button1);
             Controls.Add(btnLogin);
             Controls.Add(lblPassword);
             Controls.Add(lblUsername);
@@ -120,7 +121,7 @@
         private Label lblUsername;
         private Label lblPassword;
         private Button btnLogin;
-        private PictureBox pictureBox1;
         private Button button1;
+        private PictureBox pictureBox1;
     }
 }

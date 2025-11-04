@@ -34,7 +34,7 @@ namespace Payroller
                 string query = "DELETE FROM employees WHERE Name = @Name";
                 using (MySqlCommand sqlcmd = new MySqlCommand(query, sqlconn))
                 {
-                    // Use parameters safely
+                    // Parameters 
                     sqlcmd.Parameters.AddWithValue("@Name", SearchName);
 
                     int rowsAffected = sqlcmd.ExecuteNonQuery();

@@ -38,7 +38,7 @@ namespace Payroller
                 {
                     sqlconn.Open();
 
-                    // Step 1: Check if username and old password match
+                    // Check if username and old password match
                     string checkQuery = "SELECT COUNT(*) FROM employees WHERE Name = @Name AND Password = @OldPassword";
                     using (MySqlCommand checkCmd = new MySqlCommand(checkQuery, sqlconn))
                     {
@@ -54,7 +54,7 @@ namespace Payroller
                         }
                     }
 
-                    // Step 2: Update password
+                    // Update password
                     string updateQuery = "UPDATE employees SET Password = @NewPassword WHERE Name = @Name";
                     using (MySqlCommand updateCmd = new MySqlCommand(updateQuery, sqlconn))
                     {
