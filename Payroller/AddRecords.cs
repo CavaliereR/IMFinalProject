@@ -19,6 +19,7 @@ namespace Payroller
             InitializeComponent();
         }
 
+        //This is the button Add Record. Sorta simple to do.
         private void btnAddRecord_Click(object sender, EventArgs e)
         {
             string name = txtName.Text.Trim();
