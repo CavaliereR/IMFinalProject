@@ -14,7 +14,7 @@ namespace Payroller
         private readonly bool isAdmin;
         private readonly string employeeUsername;
 
-        // Parameterless constructor kept for designer support — treat as admin by default
+        // Parameterless constructor kept for designer support treat as admin by default
         public EmployeeSQL()
         {
             InitializeComponent();
@@ -36,7 +36,6 @@ namespace Payroller
             try
             {
                 // Preserve designer-created controls by checking for null
-                // (btnaddrecord and dataGridView1 are expected to exist in the designer)
                 if (btnaddrecord != null)
                     btnaddrecord.Visible = this.isAdmin;
 
@@ -50,7 +49,7 @@ namespace Payroller
             }
             catch
             {
-                // If designer controls are not present yet, ignore safely
+
             }
 
             LoadEmployeeData();

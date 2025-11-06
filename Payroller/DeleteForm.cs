@@ -42,6 +42,7 @@ namespace Payroller
                     if (rowsAffected > 0)
                     {
                         MessageBox.Show("Record Deleted Successfully!", "Record Removed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
                     }
                     else
                     {

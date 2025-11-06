@@ -42,12 +42,13 @@ namespace Payroller
                 return;
             }
 
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(email) ||
-                string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(position))
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(email))
             {
                 MessageBox.Show("Please fill out all required fields.", "Missing Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+
             // Aiven connection string
             string connectionString = "server=mysql-8e60174-payroll-6c5f.f.aivencloud.com;port=28063;database=employeemanagementdb;uid=avnadmin;pwd=AVNS_oL7eujRP_tyTsVY7OPl;SslMode=Required;";
             using (MySqlConnection sqlconn = new MySqlConnection(connectionString))
@@ -105,5 +106,7 @@ namespace Payroller
                 }
             }
         }
+
+
     }
 }

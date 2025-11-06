@@ -40,7 +40,7 @@
             dataGridView1.Location = new Point(0, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(801, 303);
+            dataGridView1.Size = new Size(800, 303);
             dataGridView1.TabIndex = 0;
             // 
             // EmployeeRefresh
@@ -82,5 +82,6 @@
         private DataGridView dataGridView1;
         private Button EmployeeRefresh;
         private Button EmployeeLogOut;
+        private PictureBox pictureBox1;
     }
 }
