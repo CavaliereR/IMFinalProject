@@ -98,11 +98,18 @@ namespace Payroller
 
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
+                    if (picEmployeePhoto.Image != null)
+                    {
+                        picEmployeePhoto.Image.Dispose(); // Dispose of the previous image to free resources
+                        picEmployeePhoto.Image = null;
+                    }
+
                     //Display Preview of selected image
                     picEmployeePhoto.Image = Image.FromFile(ofd.FileName);
 
                     // Convert image to byte array for database storage
                     imageBytes = System.IO.File.ReadAllBytes(ofd.FileName);
+
                 }
             }
         }
