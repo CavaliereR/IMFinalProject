@@ -5,12 +5,15 @@ namespace Payroller
 {
     static class Program
     {
+        public static Loaded MainLoadedForm;
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Loaded());
+
+            MainLoadedForm = new Loaded();
+            Application.Run(MainLoadedForm);
         }
     }
 }

@@ -25,6 +25,7 @@
             btnLogin = new Button();
             button1 = new Button();
             pictureBox1 = new PictureBox();
+            btnShutDown = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -93,11 +94,22 @@
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
             // 
+            // btnShutDown
+            // 
+            btnShutDown.Location = new Point(9, 12);
+            btnShutDown.Name = "btnShutDown";
+            btnShutDown.Size = new Size(94, 29);
+            btnShutDown.TabIndex = 8;
+            btnShutDown.Text = "Exit";
+            btnShutDown.UseVisualStyleBackColor = true;
+            btnShutDown.Click += btnShutDown_Click;
+            // 
             // LogIn
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(427, 266);
+            Controls.Add(btnShutDown);
             Controls.Add(pictureBox1);
             Controls.Add(button1);
             Controls.Add(btnLogin);
@@ -123,5 +135,6 @@
         private Button btnLogin;
         private Button button1;
         private PictureBox pictureBox1;
+        private Button btnShutDown;
     }
 }

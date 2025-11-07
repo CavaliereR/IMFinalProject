@@ -9,6 +9,7 @@ namespace Payroller
         public LogIn()
         {
             InitializeComponent();
+
         }
 
         private void Passwordscreen_Load(object sender, EventArgs e)
@@ -96,8 +97,25 @@ namespace Payroller
         {
             ChangePassword nextForm = new ChangePassword();
             nextForm.Show();
-            this.Close();
+            this.Hide();
         }
+
+
+
+        private void btnShutDown_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to close the application?",
+                "Confirm Exit",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit(); 
+            }
+        }
+
     }
 }
 

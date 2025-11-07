@@ -112,7 +112,12 @@ namespace Payroller
         {
             LogIn login = new LogIn();
             login.Show();
-            this.Close();
+            this.Hide();
+        }
+
+        private void Employee_Pov_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

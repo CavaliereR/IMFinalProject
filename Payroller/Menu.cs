@@ -36,7 +36,7 @@ namespace Payroller
 
             LogIn nextForm = new LogIn();
             nextForm.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void salary_manager_Click(object sender, EventArgs e)
@@ -44,6 +44,11 @@ namespace Payroller
             FindEmployeeForm nextForm = new FindEmployeeForm();
             nextForm.Show();
             this.Close();
+        }
+
+        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
